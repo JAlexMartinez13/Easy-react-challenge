@@ -1,22 +1,36 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import HiddenComponent from './hidden';
 import './App.css';
 
 function App() {
+  const [login, setLogin] = useState(false);
+  
+  const isLoggedIn = true
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+      <h1>{login ? 'Welcome Back!' : 'Please Log in'}
+      </h1>
+      {login
+      ?
+       
+        <>
+       <button
+       onClick={()=> setLogin(!true)}
+       >Log Out</button>
+
+      <button onClick={()=>{ alert('Malware Installed'); }}>Free stuff</button>
+        </>
+
+        :
+        <button
+        onClick={()=> setLogin(true)}
+        >Login</button>
+ 
+      }
+      {login && <HiddenComponent/>}
       </header>
     </div>
   );
